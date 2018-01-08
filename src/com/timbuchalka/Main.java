@@ -61,25 +61,19 @@ public class Main {
 
             String direction = scanner.nextLine().toUpperCase();
 
-            if(exits.containsKey(direction)) {
-                loc = exits.get(direction);
-
-            }
-            else if(direction.length()>1){
+            if(direction.length()>1){
                 String[] words = direction.split(" ");
-                boolean flag = true;
-                while (flag == true) {
-                    for(String s : words){
-                        if(vocabulary.containsKey(s)){
-                            loc = exits.get(vocabulary.get(s));
-                            flag=false;
-                        }
-                    }
-                    if(flag==true){
-                        System.out.println("You cannot go in that direction");
-                        flag=false;
+                for(String s : words){
+                    if(vocabulary.containsKey(s)){
+                        direction = vocabulary.get(s);
+                        break;
                     }
                 }
+
+            }
+
+            if(exits.containsKey(direction)) {
+                loc = exits.get(direction);
 
             }
             else {
