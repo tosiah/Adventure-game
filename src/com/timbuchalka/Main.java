@@ -67,12 +67,20 @@ public class Main {
             }
             else if(direction.length()>1){
                 String[] words = direction.split(" ");
-                for(String s : words){
-                    if(vocabulary.containsKey(s)){
-                        loc = exits.get(vocabulary.get(s));
-                        break;
+                boolean flag = true;
+                while (flag == true) {
+                    for(String s : words){
+                        if(vocabulary.containsKey(s)){
+                            loc = exits.get(vocabulary.get(s));
+                            flag=false;
+                        }
+                    }
+                    if(flag==true){
+                        System.out.println("You cannot go in that direction");
+                        flag=false;
                     }
                 }
+
             }
             else {
                 System.out.println("You cannot go in that direction");
